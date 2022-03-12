@@ -23,139 +23,20 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
   ScrollController scrollController = ScrollController();
 
   bool closeTopContainer = false;
-  // DateTimeRange? dateRange;
+  
   bool flag = false;
   late TooltipBehavior _tooltipBehavior;
 
-  String? _selectedStartDate;
-  String? _selectedEndDate;
+  
 
-  String? _shrdStartDate;
-  String? _shrdEndDate;
-
-  // Future pickDateRange(BuildContext context) async {
-  //   final initialDateRange = DateTimeRange(
-  //     start: DateTime.now(),
-  //     end: DateTime.now().add(Duration(hours: 24 * 3)),
-  //   );
-  //   final newDateRange = await showDateRangePicker(
-  //     context: context,
-  //     firstDate: DateTime(DateTime.now().year - 5),
-  //     lastDate: DateTime(DateTime.now().year + 5),
-  //     initialDateRange: dateRange ?? initialDateRange,
-  //   );
-
-  //   if (newDateRange == null) return;
-  //   //print(newDateRange.start);
-  //   dateRange = newDateRange;
-  //   _selectedStartDate = DateFormat('dd/MM/yyyy').format(dateRange!.start);
-  //   _selectedEndDate = DateFormat('dd/MM/yyyy').format(dateRange!.end);
-
-  //   //print(dateRange);
-  //   if (dateRange != null) {
-  //     getShrdDate();
-  //   }
-  // }
-
-  // getShrdDate() async {
-  //   final _sharedPrefs = await SharedPreferences.getInstance();
-
-  //   final endDate = _sharedPrefs.setString('end', _selectedEndDate!);
-  //   final startDate = _sharedPrefs.setString('start', _selectedStartDate!);
-
-  //   print('end${_selectedEndDate}');
-  //   print(endDate.toString());
-
-  //   // _selectedStartDate = DateFormat('dd/MM/yyyy').format(dateRange!.start);
-  //   // _selectedEndDate = DateFormat('dd/MM/yyyy').format(dateRange!.end);
-  //   _shrdEndDate = _sharedPrefs.get('end') as String?;
-  //   _shrdStartDate = _sharedPrefs.get('start') as String?;
-  //   print('set ${_shrdEndDate}');
-  // }
-
-  //bool dateRangePerformed = false;
-
-  // String getFrom() {
-  //   if (dateRange == null) {
-  //     return 'From';
-  //   } else {
-  //     return DateFormat('dd/MM/yyyy').format(dateRange!.start);
-  //   }
-  // }
-
-  // String getUntil() {
-  //   if (dateRange == null) {
-  //     return 'Until';
-  //   } else {
-  //     // print('dateRange${(dateRange!.start)}');
-  //     return DateFormat('dd/MM/yyyy').format(dateRange!.end);
-  //   }
-  // }
-
-  // final _dateController = TextEditingController(
-  //     text: DateFormat('MMM dd, yyyy').format(DateTime.now()));
-  //final _dateController = TextEditingController();
-  //final _endController = TextEditingController();
-  //final _startController = TextEditingController();
-  //List<String> listDate = [];
-  //int flag = 0;
-
-  /* .............pieChart list to map.............. */
-
-  // Future pieData() async {
-  //   List<TransactionModel> data =
-  //       await TransactionDB.instance.getAllTransactions();
-
-  //   final Map<String, double> result = Map.fromIterable(data,
-  //       key: (v) => v.category.name, value: (v) => v.amount);
-  //   //_dataMap = result;
-
-  //   if (result.isEmpty) {
-  //     return;
-  //   }
-  //   print(data.toList());
-  //   setState(() {
-  //     _dataMap = result;
-  //   });
-  //   print('pieData');
-  // }
-
-/* .............Total of Income and Expense.............. */
-  // getTotalAmount() async {
-  //   List<TransactionModel> entireData =
-  //       await TransactionDB.instance.getAllTransactions();
-  //   double _income = 0;
-  //   double _expense = 0;
-  //   for (TransactionModel data in entireData) {
-  //     if (data.type == CategoryType.income) {
-  //       _income += data.amount;
-  //     } else {
-  //       _expense += data.amount;
-  //     }
-  //     print('get total');
-  //   }
-  //   setState(() {
-  //     totalIncome = _income;
-  //     totalExpense = _expense;
-  //   });
-  //   TransactionDB.instance.refresh();
-  // }
-
-  //\\\\\\\\\\\\\\\\\filter with Date range\\\\\\\\\\\\\\\\
-  // getfiltered()async{
-
-  // }
-
+ 
   @override
   void initState() {
     // TODO: implement initState
     TransactionDB.instance.refresh();
     _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
-    // pieData();
-
-    //getTotalAmount();
-    //TransactionDB.instance.filterRange(dateRange!.start, getUntil());
+    
     scrollController.addListener(() {
       setState(() {
         // dataMap = pieData() as Map<String, double>;
@@ -281,11 +162,7 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: <Color>[
-                        //Color(0xffce009c),
-                        //Color(0xffec0303),
-                        //Color(0xFFFFFFFF),
-                        //Color(0xffee2f2f),
-                        //Color(0xfff36d6d)
+                        
                         Colors.red, Colors.orange
                       ], // red to yellow
                       tileMode: TileMode
@@ -297,27 +174,12 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Text(
-                        //   'Spent',
-                        //   style: TextStyle(
-                        //     //color: app_color.textWhite,
-                        //     letterSpacing: 1,
-                        //   ),
-                        // ),
+                       
                         ValueListenableBuilder(
                           valueListenable: TransactionDB
                               .instance.expenseTransactionListNotifier,
                           builder: (BuildContext ctx, expense, Widget? _) {
-                            //if (expense==null)
-                            // return Text(
-                            //   '₹ 0',
-                            //   style: TextStyle(
-                            //     fontSize: 18,
-                            //     fontWeight: FontWeight.bold,
-                            //     color: Color(0xFFffffff),
-                            //     letterSpacing: 1,
-                            //   ),
-                            // );
+                            
                             return expense == null
                                 ? const Text('₹ 0')
                                 : Text(
@@ -374,16 +236,7 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
                 child: SizedBox(
                   width: 350,
                   height: 200,
-                  child:
-                      // TransactionDB.instance.pieMapNotifier.value == null ||
-                      //         TransactionDB.instance.pieMapNotifier.value.isEmpty
-                      //     ? const Center(
-                      //         child: Text(
-                      //         'Set Range To See Pie Chart',
-                      //         style: TextStyle(color: Colors.grey),
-                      //       ))
-                      //     :
-                      ValueListenableBuilder(
+                  child: ValueListenableBuilder(
                     valueListenable: TransactionDB.instance.mylistNotifier,
                     builder:
                         (BuildContext ctx, List<Customer> newMap, Widget? _) {
@@ -448,19 +301,9 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
                       itemBuilder: (ctx, index) {
                         final _value = newList[index];
                         return Card(
-                          // shadowColor: _value.type == CategoryType.expense
-                          //     ? Colors.red
-                          //     : Colors.lightGreenAccent.shade700,
                           shape: RoundedRectangleBorder(
-                            // side: BorderSide(
-                            //     width: 2,
-                            //     color: _value.type == CategoryType.expense
-                            //         ? Colors.red
-                            //         : Colors.lightGreenAccent.shade700),
                             borderRadius: BorderRadius.circular(15.0),
                           ),
-                          // margin: EdgeInsets.only(left: 10, right: 10),
-                          elevation: 1,
                           child: Slidable(
                             //closeOnScroll: true,
                             startActionPane: ActionPane(
@@ -540,21 +383,5 @@ class _ScreenTransactionState extends State<ScreenTransaction> {
     //return '${date.day}\n${date.month}';
   }
 
-  // Future<void> filterange() async {
-  //   // final _db = await Hive.openBox<TransactionModel>(TRANSACTION_DB_NAME);
-  //   // final filterList = _db.valuesBetween(startKey: startKey, endKey: endKey);
-
-  //   final _list = await TransactionDB.instance.getAllTransactions();
-  //   //  _list.sort((startKey, endKey) => endKey.date.compareTo(startKey.date));
-  //   var list1;
-  //   for (int i = 0; i < _list.length - 1; i++) {
-  //     for (var j = 1; j < _list.length; j++) {
-  //       if (_list[i] == _list[j]) {
-  //         list1[i] = _list[i];
-  //         print(_list[i]);
-  //       }
-  //       print(_list.toString());
-  //     }
-  //   }
-  // }
+ 
 }

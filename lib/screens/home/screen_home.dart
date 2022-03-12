@@ -71,87 +71,111 @@ class _ScreenHomeState extends State<ScreenHome> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Color(0xf0f6f3ec),
-        title: const Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Text(
-            'Money Manager',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: Size(0, 25),
-          child: SizedBox(
-            height: 35,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                right: 10,
-                left: 10,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        title: Padding(
+          padding: EdgeInsets.only(top: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Hello..',
+                  Container(
+                    height: 28,
+                    child: Image.asset(
+                      'assets/icon/bux_vector.png',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'buX',
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.italic),
-                  ),
-                  TextButton.icon(
-                    onPressed: () async {
-                      await pickDateRange(context);
-                      if (dateRange != null) {
-                        TransactionDB.instance
-                            .wafi(dateRange!.start, dateRange!.end);
-                        TransactionDB.instance.sfPieChart();
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.calendar_today,
-                      color: Colors.black,
-                      size: 15,
-                    ),
-                    label: Text(
-                      dateRange == null
-                          ? 'Set Range'
-                          : '$_selectedStartDate - $_selectedEndDate',
-                      style: TextStyle(color: Colors.black),
-                      // _selectedDate.toString(),
+                      color: Color.fromARGB(255, 77, 76, 76),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // ElevatedButton.icon(
-                  //   onPressed: () {
-                  //     if (dateRange == null) {
-                  //       print('null');
-                  //       return;
-                  //     }
-                  //     TransactionDB.instance
-                  //         .wafi(dateRange!.start, dateRange!.end);
-                  //     // final _list = TransactionDB.instance
-                  //     //     .filterAllTransaction(
-                  //     //         dateRange!.start, dateRange!.end);
-                  //     //print(_list);
-                  //     TransactionDB.instance.refresh();
-                  //     print('search');
-                  //   },
-                  //   icon: Icon(
-                  //     Icons.search,
-                  //     color: Colors.black,
-                  //   ),
-                  //   label: Text(''),
-                  //   style: ElevatedButton.styleFrom(
-                  //       primary: Colors.transparent, elevation: 0),
-                  // ),
                 ],
               ),
-            ),
+              Container(
+                //color: Colors.amber,
+                height: 60,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 0, left: 10, top: 23),
+                  child: Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TextButton.icon(
+                        onPressed: () async {
+                          await pickDateRange(context);
+                          if (dateRange != null) {
+                            TransactionDB.instance
+                                .wafi(dateRange!.start, dateRange!.end);
+                            TransactionDB.instance.sfPieChart();
+                          }
+                        },
+                        icon: const Icon(
+                          Icons.calendar_today,
+                          color: Colors.black,
+                          size: 12,
+                        ),
+                        label: Text(
+                          dateRange == null
+                              ? 'Set Range'
+                              : '$_selectedStartDate - $_selectedEndDate',
+                          style: TextStyle(color: Colors.black),
+                          // _selectedDate.toString(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
+        //centerTitle: true,
+        // bottom: PreferredSize(
+        //   preferredSize: Size(0, 25),
+        //   child: SizedBox(
+        //     height: 35,
+        //     child: Padding(
+        //       padding: const EdgeInsets.only(
+        //         right: 10,
+        //         left: 10,
+        //       ),
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.end,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           TextButton.icon(
+        //             onPressed: () async {
+        //               await pickDateRange(context);
+        //               if (dateRange != null) {
+        //                 TransactionDB.instance
+        //                     .wafi(dateRange!.start, dateRange!.end);
+        //                 TransactionDB.instance.sfPieChart();
+        //               }
+        //             },
+        //             icon: const Icon(
+        //               Icons.calendar_today,
+        //               color: Colors.black,
+        //               size: 15,
+        //             ),
+        //             label: Text(
+        //               dateRange == null
+        //                   ? 'Set Range'
+        //                   : '$_selectedStartDate - $_selectedEndDate',
+        //               style: TextStyle(color: Colors.black),
+        //               // _selectedDate.toString(),
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ),
       bottomNavigationBar: MoneyManagerBottomNavigation(),
       body: SafeArea(

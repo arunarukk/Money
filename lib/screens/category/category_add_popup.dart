@@ -2,65 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:money_manager/db/category/category_db.dart';
 import 'package:money_manager/models/category/category_model.dart';
 
-// showcategoryAddPopup(BuildContext context) {
-//   showDialog(
-//     context: context,
-//     builder: (ctx) {
-//       return SimpleDialog(
-//         title: const Text(
-//           'Add Category',
-//           textAlign: TextAlign.center,
-//         ),
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: TextFormField(
-//               decoration:const InputDecoration(
-//                 labelText: 'Category Name',
-//                 //labelStyle: TextStyle(color: Colors.black),
-//                 //hoverColor: Colors.black,
-//                 // border: UnderlineInputBorder(),
-//                 focusedBorder: UnderlineInputBorder(
-//                   borderSide: BorderSide(color: Colors.cyan, width: 2),
-//                 ),
-//                 // enabledBorder: UnderlineInputBorder(
-//                 //   borderRadius: BorderRadius.circular(25.0),
-//                 //   borderSide: BorderSide(
-//                 //     color: Colors.red,
-//                 //     width: 2.0,
-//                 //   ),
-//                 // ),
-//               ),
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: Row(
-//               children: [
-//                 RadioButton(
-//                   title: 'Income',
-//                   val: 2,
-//                 ),
-//                 RadioButton(
-//                   title: 'Expense',
-//                   val: 1,
-//                 )
-//               ],
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.only(left: 80, right: 80),
-//             child: ElevatedButton(
-//               style: ElevatedButton.styleFrom(primary: Colors.cyan),
-//               onPressed: () {},
-//               child: Text('Add'),
-//             ),
-//           ),
-//         ],
-//       );
-//     },
-//   );
-// }
+
 
 ValueNotifier<CategoryType> selectedCategoryNotifier =
     ValueNotifier(CategoryType.income);

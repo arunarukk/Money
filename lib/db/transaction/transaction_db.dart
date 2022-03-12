@@ -105,24 +105,11 @@ class TransactionDB implements TransactionDbFunctions {
       }
     }
 
-    //transactionListNotifier.notifyListeners();
-
-    // filteredTransactionListNotifier.value.clear();
-    // filteredTransactionListNotifier.value.addAll(_newList);
-    // filteredTransactionListNotifier.notifyListeners();
-    //filteredListReturn();
-
-    // print('filreturn${_newList.toList()}');
+    
     return _newList;
   }
 
-  // filteredListReturn() async {
-  //   if (_newList == null) {
-  //     return;
-  //   } else {
-  //     return _newList;
-  //   }
-  // }
+
 
   Future getTotalAmount() async {
     // List<TransactionModel> entireData = await getAllTransactions();
@@ -146,14 +133,10 @@ class TransactionDB implements TransactionDbFunctions {
     }
     totalAmount.add(_income);
     totalAmount.add(_expense);
-    //print(totalAmount);
-    //totalAllTransactionListNotifier.value.clear();
+    
     incomeTransactionListNotifier.value = totalAmount.first;
     expenseTransactionListNotifier.value = totalAmount.last;
-    //totalAllTransactionListNotifier.value.addAll(totalAmount);
-
-    //incomeTransactionListNotifier.notifyListeners();
-    //expenseTransactionListNotifier.notifyListeners();
+   
   }
 
   pieData() async {
